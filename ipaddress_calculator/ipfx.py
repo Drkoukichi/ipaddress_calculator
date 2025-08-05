@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 IP Address Calculator (ipfx)
 A comprehensive command-line tool for IP address calculations and network analysis.
