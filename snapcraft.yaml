@@ -1,0 +1,49 @@
+name: ipfx
+base: core24
+version: '1.2'
+summary: IP address calculation and network analysis tool
+license: MIT
+description: |
+  A comprehensive command-line tool for IP address calculations and network analysis. 
+  This tool supports both IPv4 and IPv6 addresses and provides detailed network information including:
+  
+  • Network address and broadcast address calculation
+  • Host count and subnet mask information
+  • CIDR notation and Cisco notation formats
+  • Private/global address identification
+  • Reverse DNS pointer records
+  • Interactive and command-line modes
+  
+  Features:
+  - Support for both IPv4 and IPv6 networks
+  - Multiple output formats (CIDR, Cisco, Ubuntu notation)
+  - Interactive mode for continuous calculations
+  - Command-line mode for scripting and automation
+  - Lightweight and fast execution
+  - No external dependencies required
+  
+  Usage examples:
+  - ipfx 192.168.1.1/24
+  - ipfx 2001:db8::1/64
+  - ipfx (interactive mode)
+
+grade: stable
+confinement: strict
+
+parts:
+  ip-address-culcurator:
+    plugin: dump
+    source: .
+    stage-packages:
+      - python3-minimal
+    organize:
+      ipfx: bin/ipfx
+    stage:
+      - bin/ipfx
+
+apps:
+  ipfx:
+    command: bin/ipfx
+    plugs:
+      - network
+      - network-bind
